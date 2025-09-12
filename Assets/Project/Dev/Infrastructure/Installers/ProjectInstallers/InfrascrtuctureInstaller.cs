@@ -1,8 +1,10 @@
+using Cinemachine;
 using Project.Data.HeroLocalData;
 using Project.Dev.Infrastructure.AssetManager;
 using Project.Dev.Infrastructure.Factories;
 using Project.Dev.Infrastructure.Factories.Interfaces;
 using Project.Dev.Infrastructure.SceneManagment;
+using Project.Dev.Services.CinemachineService;
 using Project.Dev.Services.LevelProgress;
 using Project.Dev.Services.Logging;
 using Project.Dev.Services.StaticDataService;
@@ -13,8 +15,9 @@ namespace Project.Dev.Infrastructure.Installers.ProjectInstallers
 {
     public class InfrascrtuctureInstaller : MonoInstaller
     {
-
         [SerializeField] private HeroLocalData _heroLocalData;
+        [SerializeField] private GameObject cinemachine;
+
         public override void InstallBindings()
         {
             Container.BindInterfacesAndSelfTo<AddressableProvider>().AsSingle();
@@ -31,6 +34,7 @@ namespace Project.Dev.Infrastructure.Installers.ProjectInstallers
                 .AsSingle()
                 .CopyIntoDirectSubContainers();
             Container.BindInterfacesAndSelfTo<LevelProgressService>().AsSingle().NonLazy();
+            BindCinemachineService();
         }
 
         private void BindFactories()
@@ -40,6 +44,17 @@ namespace Project.Dev.Infrastructure.Installers.ProjectInstallers
             Container.Bind<IHeroFactorie>().To<HeroFactorie>().AsSingle();
             Container.Bind<IStageFactorie>().To<StageFactorie>().AsSingle();
             Container.Bind<IUIFactorie>().To<UIFactorie>().AsSingle();
+        }
+
+        private void BindCinemachineService()
+        {
+            var cinemachinePrefab = Instantiate(cinemachine, this.transform)
+                .GetComponent<CinemachineVirtualCamera>();
+            cinemachinePrefab.gameObject.name = "CinemachineCamera";
+
+            Container.BindInterfacesAndSelfTo<CinemachineService>().AsSingle()
+                .WithArguments(cinemachinePrefab)
+                .NonLazy();
         }
     }
 }
