@@ -1,5 +1,4 @@
 using System.Threading.Tasks;
-using Project.Dev.GamePlay.NPC.Player;
 using UnityEngine;
 
 namespace Project.Dev.Infrastructure.Factories.Interfaces

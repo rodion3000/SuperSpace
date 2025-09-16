@@ -9,7 +9,5 @@ public class GamePlayInstaller : MonoInstaller
     {
         Container.BindInstance(levelProgressWather);
     }
-
-
     
 }

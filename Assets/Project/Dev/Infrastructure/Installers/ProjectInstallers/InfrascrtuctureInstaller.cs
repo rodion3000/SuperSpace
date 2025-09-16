@@ -5,6 +5,7 @@ using Project.Dev.Infrastructure.Factories;
 using Project.Dev.Infrastructure.Factories.Interfaces;
 using Project.Dev.Infrastructure.SceneManagment;
 using Project.Dev.Services.CinemachineService;
+using Project.Dev.Services.InputService;
 using Project.Dev.Services.LevelProgress;
 using Project.Dev.Services.Logging;
 using Project.Dev.Services.StaticDataService;
@@ -29,12 +30,13 @@ namespace Project.Dev.Infrastructure.Installers.ProjectInstallers
         private void BindServices()
         {
             Container.Bind<ILoggingService>().To<LoggingService>().AsSingle().NonLazy();
+            BindCinemachineService();
+            Container.Bind<IInputService>().To<InputService>().AsSingle().NonLazy();
             Container.BindInterfacesAndSelfTo<StaticDataService>().AsSingle().NonLazy();
             Container.BindInterfacesAndSelfTo<LevelProgressServiceResolver>()
                 .AsSingle()
                 .CopyIntoDirectSubContainers();
             Container.BindInterfacesAndSelfTo<LevelProgressService>().AsSingle().NonLazy();
-            BindCinemachineService();
         }
 
         private void BindFactories()
@@ -56,5 +58,6 @@ namespace Project.Dev.Infrastructure.Installers.ProjectInstallers
                 .WithArguments(cinemachinePrefab)
                 .NonLazy();
         }
+
     }
 }
