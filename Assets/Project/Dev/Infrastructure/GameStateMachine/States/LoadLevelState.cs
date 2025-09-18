@@ -5,6 +5,7 @@ using Project.Dev.Infrastructure.GameStateMachine.Interface;
 using CustomExtensions.Tasks;
 using Project.Data.HeroData.StageProgressData;
 using Project.Dev.Infrastructure.SceneManagment;
+using Project.Dev.Services.CinemachineService;
 using UnityEngine;
 
 namespace Project.Dev.Infrastructure.GameStateMachine.States
@@ -14,6 +15,7 @@ namespace Project.Dev.Infrastructure.GameStateMachine.States
         private readonly IHeroFactorie _heroFactory;
         private readonly IStageFactorie _stageFactorie;
         private readonly IUIFactorie _uiFactorie;
+        private readonly ICinemachineService _cinemachineService;
         private readonly GameStateMachine _gameStateMachine;
         private readonly SceneLoader _sceneLoader;
         
@@ -24,13 +26,15 @@ namespace Project.Dev.Infrastructure.GameStateMachine.States
             IHeroFactorie heroFactory,
             IStageFactorie stageFactorie,
             IUIFactorie uiFactorie,
-            SceneLoader sceneLoader)
+            SceneLoader sceneLoader,
+            ICinemachineService cinemachineService)
         {
             _gameStateMachine = gameStateMachine;
             _heroFactory = heroFactory;
             _uiFactorie = uiFactorie;
             _stageFactorie = stageFactorie;
             _sceneLoader = sceneLoader;
+            _cinemachineService = cinemachineService;
         }
         
         public void Enter(StageLocalData data)
@@ -79,7 +83,7 @@ namespace Project.Dev.Infrastructure.GameStateMachine.States
         }
         private void SetupCamera(GameObject hero)
         {
-            //set up camera follow
+            _cinemachineService.HeroCamera(hero);
         }
 
         private async Task SetupLocation() =>

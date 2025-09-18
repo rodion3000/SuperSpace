@@ -5,9 +5,9 @@ namespace Project.Dev.GamePlay.AnimatorLogic
     {
         Unknow = -1,
         Idle = 0,
-        Run = 1,
-        Attack = 2,
-        Hit = 3,
-        Death = 4
+        Walk = 1,
+        StrafeLeft = 2,
+        TurnLeft = 3,
+        TurnRight = 4
     }
 }
