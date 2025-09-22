@@ -29,8 +29,8 @@ namespace Project.Dev.GamePlay.NPC.Player1
 
         [HorizontalGroup("Actions")]
         [Button ("StrafeLeft"), GUIColor(0,0,1)]
-        public void PlayStrafeLeft() =>
-            animator.SetTrigger(StrafeLeftHash);
+        public void PlayStrafeLeft(int velocity) =>
+            animator.SetFloat(StrafeLeftHash, velocity);
 
         [HorizontalGroup("Actions")]
         [Button ("TurnLeft"), GUIColor(0.5f, 0.5f, 0)]

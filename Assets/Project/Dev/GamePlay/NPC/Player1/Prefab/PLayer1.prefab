@@ -63,7 +63,18 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0969ef2c7929b164d9041699c6384b3a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2447412295536196211}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0969ef2c7929b164d9041699c6384b3a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1971409667213052504}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0969ef2c7929b164d9041699c6384b3a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3335209248855641279}
   m_SourcePrefab: {fileID: 100100000, guid: 0969ef2c7929b164d9041699c6384b3a, type: 3}
+--- !u!95 &1021990333213832592 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 0969ef2c7929b164d9041699c6384b3a, type: 3}
+  m_PrefabInstance: {fileID: 6864685824178866177}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6018263425486583120 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 0969ef2c7929b164d9041699c6384b3a, type: 3}
@@ -95,3 +106,31 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.545, z: 0}
+--- !u!114 &1971409667213052504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6018263425486583120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d13d463751742c4185284e813c36260, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 1021990333213832592}
+--- !u!114 &3335209248855641279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6018263425486583120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e755a9df20c3094fac001172497c16e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementSpeed: 5
+  characterController: {fileID: 2447412295536196211}
+  heroAnimator: {fileID: 1971409667213052504}
