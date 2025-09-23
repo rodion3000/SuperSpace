@@ -34,7 +34,18 @@ namespace Project.Dev.GamePlay.NPC.Player1
 
             if (_inputService.MoveAxis.sqrMagnitude > 0.001f)
             {
-                movementVector = _camera.transform.TransformDirection(_inputService.MoveAxis);
+                var input = _inputService.MoveAxis;
+
+                if (Mathf.Abs(input.x) > Mathf.Abs(input.y))
+                {
+                    input.y = 0;
+                }
+                else
+                {
+                    input.x = 0;
+                }
+
+                movementVector = _camera.transform.TransformDirection(input);
                 movementVector.y = 0;
                 movementVector.Normalize();
 
