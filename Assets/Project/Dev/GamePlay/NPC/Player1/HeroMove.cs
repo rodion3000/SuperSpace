@@ -48,14 +48,39 @@ namespace Project.Dev.GamePlay.NPC.Player1
                 movementVector = _camera.transform.TransformDirection(input);
                 movementVector.y = 0;
                 movementVector.Normalize();
-
-                // Убрали transform.forward = movementVector;
             }
 
             movementVector += Physics.gravity;
 
             characterController.Move(movementVector * (movementSpeed * Time.deltaTime));
-            heroAnimator.PlayWalk(characterController.velocity.magnitude);
+
+            Vector3 Speed = characterController.velocity;
+            Speed.y = 0;
+            if (Speed.sqrMagnitude > 0.001f)
+            {
+                Vector3 localMove = transform.InverseTransformDirection(Speed);
+                float horizontalMove = localMove.x;
+                float verticalMove = localMove.z;
+
+                if (Mathf.Abs(horizontalMove) > Mathf.Abs(verticalMove))
+                {
+                    if (horizontalMove > 0)
+                        heroAnimator.PlayStrafeRight(characterController.velocity.magnitude);
+                    else
+                        heroAnimator.PlayStrafeLeft(characterController.velocity.magnitude);
+                }
+                else
+                {
+                    if (verticalMove > 0)
+                        heroAnimator.PlayWalk(characterController.velocity.magnitude);
+                }
+            }
+            else
+            {
+                heroAnimator.PlayWalk(0);
+                heroAnimator.PlayStrafeLeft(0);
+                heroAnimator.PlayStrafeRight(0);
+            }
         }
     }
 }
