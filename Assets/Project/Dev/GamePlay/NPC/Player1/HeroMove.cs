@@ -36,7 +36,6 @@ namespace Project.Dev.GamePlay.NPC.Player1
         {
             var input = _inputService.MoveAxis;
 
-            // Ограничение движения по основной оси (по вашему оригиналу)
             if (Mathf.Abs(input.x) > Mathf.Abs(input.y))
             {
                 input.y = 0;
@@ -46,11 +45,9 @@ namespace Project.Dev.GamePlay.NPC.Player1
                 input.x = 0;
             }
 
-            // Получаем Y-угол героя
             float heroYAngle = transform.eulerAngles.y;
             Quaternion heroYRotation = Quaternion.Euler(0, heroYAngle, 0);
 
-            // Преобразовываем входные данные относительно героя
             movementVector = heroYRotation * new Vector3(input.x, 0, input.y);
 
             movementVector.y = 0;
@@ -61,12 +58,10 @@ namespace Project.Dev.GamePlay.NPC.Player1
 
         characterController.Move(movementVector * (movementSpeed * Time.deltaTime));
 
-        // Анализ скорости для анимаций
         Vector3 Speed = characterController.velocity;
         Speed.y = 0;
         if (Speed.sqrMagnitude > 0.001f)
         {
-            // Текущая локальная скорость относительно героя
             Vector3 localMove = transform.InverseTransformDirection(Speed);
             float horizontalMove = localMove.x;
             float verticalMove = localMove.z;
