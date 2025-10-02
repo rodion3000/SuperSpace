@@ -37,13 +37,9 @@ namespace Project.Dev.GamePlay.NPC.Player1
             var input = _inputService.MoveAxis;
 
             if (Mathf.Abs(input.x) > Mathf.Abs(input.y))
-            {
                 input.y = 0;
-            }
             else
-            {
                 input.x = 0;
-            }
 
             float heroYAngle = transform.eulerAngles.y;
             Quaternion heroYRotation = Quaternion.Euler(0, heroYAngle, 0);
@@ -66,22 +62,13 @@ namespace Project.Dev.GamePlay.NPC.Player1
             float horizontalMove = localMove.x;
             float verticalMove = localMove.z;
 
-            if (Mathf.Abs(horizontalMove) > Mathf.Abs(verticalMove))
-            {
-                if (horizontalMove > 0)
-                    heroAnimator.PlayMove(2);
-                else
-                    heroAnimator.PlayMove(3);
-            }
-            else
-            {
-                    heroAnimator.PlayMove(1);
-            }
+            heroAnimator.PlayMove(Mathf.Abs(horizontalMove) > Mathf.Abs(verticalMove)
+                ? (horizontalMove > 0 ? 2 : 3)
+                : 1
+            );
         }
         else
-        {
-           heroAnimator.PlayMove(0);
-        }
+            heroAnimator.PlayMove(0);
     }
     }
 }
