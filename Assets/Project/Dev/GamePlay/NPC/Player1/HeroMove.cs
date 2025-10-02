@@ -9,8 +9,9 @@ namespace Project.Dev.GamePlay.NPC.Player1
         [SerializeField] private int movementSpeed;
         [SerializeField] private CharacterController characterController;
         [SerializeField] private HeroAnimator heroAnimator;
+        [SerializeField] private float rotationSpeed;
+        private float _rotationAngle;
         private IInputService _inputService;
-        private Camera _camera;
 
         [Inject]
         private void Construct(IInputService inputService)
@@ -18,17 +19,17 @@ namespace Project.Dev.GamePlay.NPC.Player1
             _inputService = inputService;
         }
 
-        void Start()
-        {
-             _camera = Camera.main;
-        }
-
         void Update()
         {
             Move();
         }
 
-         private void Move()
+        private void LateUpdate()
+        {
+            Rotation();
+        }
+
+        private void Move()
     {
         var movementVector = Vector3.zero;
 
@@ -54,11 +55,11 @@ namespace Project.Dev.GamePlay.NPC.Player1
 
         characterController.Move(movementVector * (movementSpeed * Time.deltaTime));
 
-        Vector3 Speed = characterController.velocity;
-        Speed.y = 0;
-        if (Speed.sqrMagnitude > 0.001f)
+        Vector3 speed = characterController.velocity;
+        speed.y = 0;
+        if (speed.sqrMagnitude > 0.001f)
         {
-            Vector3 localMove = transform.InverseTransformDirection(Speed);
+            Vector3 localMove = transform.InverseTransformDirection(speed);
             float horizontalMove = localMove.x;
             float verticalMove = localMove.z;
 
@@ -69,6 +70,18 @@ namespace Project.Dev.GamePlay.NPC.Player1
         }
         else
             heroAnimator.PlayMove(0);
+    }
+
+    private void Rotation()
+    {
+        Transform heroSpine = transform
+            .Find("GameSkeleton")
+            .Find("Hips")
+            .Find("Spine");
+
+        Vector2 input = _inputService.AimAxis;
+        _rotationAngle += input.x * rotationSpeed * Time.deltaTime;
+        heroSpine.localRotation = Quaternion.Euler(-_rotationAngle,0f,0f);
     }
     }
 }

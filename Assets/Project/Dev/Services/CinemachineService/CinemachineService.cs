@@ -14,8 +14,16 @@ namespace Project.Dev.Services.CinemachineService
 
         public void HeroCamera(GameObject hero)
         {
-            _virtualCamera.Follow = hero.transform;
-            _virtualCamera.LookAt = hero.transform;
+            Transform heroSpine = hero.transform
+                .Find("GameSkeleton")
+                .Find("Hips")
+                .Find("Spine");
+
+            if (heroSpine != null)
+            {
+                _virtualCamera.Follow = hero.transform;
+                _virtualCamera.LookAt = heroSpine;
+            }
         }
     }
 }
