@@ -69,20 +69,18 @@ namespace Project.Dev.GamePlay.NPC.Player1
             if (Mathf.Abs(horizontalMove) > Mathf.Abs(verticalMove))
             {
                 if (horizontalMove > 0)
-                    heroAnimator.PlayStrafeRight(characterController.velocity.magnitude);
+                    heroAnimator.PlayMove(2);
                 else
-                    heroAnimator.PlayStrafeLeft(characterController.velocity.magnitude);
+                    heroAnimator.PlayMove(3);
             }
             else
             {
-                    heroAnimator.PlayWalk(characterController.velocity.magnitude);
+                    heroAnimator.PlayMove(1);
             }
         }
         else
         {
-            heroAnimator.PlayWalk(0);
-            heroAnimator.PlayStrafeLeft(0);
-            heroAnimator.PlayStrafeRight(0);
+           heroAnimator.PlayMove(0);
         }
     }
     }

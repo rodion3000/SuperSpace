@@ -8,16 +8,12 @@ namespace Project.Dev.GamePlay.NPC.Player1
     public class HeroAnimator : MonoBehaviour, IAnimatorStateReader
     {
         // animator params
-        private static readonly int StrafeLeftHash = Animator.StringToHash("StrafeLeft");
-        private static readonly int StrafeRightHash = Animator.StringToHash("StrafeRight");
+        private static readonly int MoveDirection = Animator.StringToHash("MoveDirection");
         private static readonly int TurnLeftHash = Animator.StringToHash("TurnLeft");
         private static readonly int TurnRightHash = Animator.StringToHash("TurnRight");
-        private static readonly int WalkHash = Animator.StringToHash("Walk");
 
         //animator states
-        private readonly int _strafeRightHash = Animator.StringToHash("StrafeRight");
-        private readonly int _strafeLeftHash = Animator.StringToHash("StrafeLeft");
-        private readonly int _walkingStateHash = Animator.StringToHash("Walk");
+        private readonly int _moveDirection = Animator.StringToHash("MoveDirection");
         private readonly int _turnLeftHash = Animator.StringToHash("TurnLeft");
         private readonly int _turnRightHash = Animator.StringToHash("TurnRight");
 
@@ -30,14 +26,9 @@ namespace Project.Dev.GamePlay.NPC.Player1
         #region Play methods
 
         [HorizontalGroup("Actions")]
-        [Button ("StrafeLeft"), GUIColor(0,0,1)]
-        public void PlayStrafeLeft(float velocity) =>
-            animator.SetFloat(StrafeLeftHash, velocity);
-
-        [HorizontalGroup("Actions")]
-        [Button ("StrafeLeft"), GUIColor(1,0,1)]
-        public void PlayStrafeRight(float velocity) =>
-            animator.SetFloat(StrafeRightHash, velocity);
+        [Button("PlayMove"), GUIColor(0, 0, 1)]
+        public void PlayMove(int value) =>
+            animator.SetInteger(MoveDirection, value);
 
         [HorizontalGroup("Actions")]
         [Button ("TurnLeft"), GUIColor(0.5f, 0.5f, 0)]
@@ -48,11 +39,6 @@ namespace Project.Dev.GamePlay.NPC.Player1
         [Button ("TurnRight"), GUIColor(1f, 0f, 0)]
         public void PlayTurnRight() =>
             animator.SetTrigger(TurnRightHash);
-
-        [HorizontalGroup("Actions")]
-        [Button("Walk"), GUIColor(0f, 1f, 0f)]
-        public void PlayWalk(float velocity) =>
-            animator.SetFloat(WalkHash, velocity);
 
         #endregion
 
@@ -71,11 +57,9 @@ namespace Project.Dev.GamePlay.NPC.Player1
         {
             AnimatorState state;
 
-            if (stateHash == _walkingStateHash)      state = AnimatorState.Walk;
+            if (stateHash == _moveDirection)      state = AnimatorState.MoveDirection;
             else if (stateHash == _turnRightHash)    state = AnimatorState.TurnRight;
             else if (stateHash == _turnLeftHash)     state = AnimatorState.TurnLeft;
-            else if (stateHash == _strafeLeftHash)   state = AnimatorState.StrafeLeft;
-            else if (stateHash == _strafeRightHash) state = AnimatorState.TurnRight;
             else                                     state = AnimatorState.Unknow;
 
             return state;
