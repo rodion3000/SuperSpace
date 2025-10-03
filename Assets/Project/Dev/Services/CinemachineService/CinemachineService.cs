@@ -21,8 +21,8 @@ namespace Project.Dev.Services.CinemachineService
 
             if (heroSpine != null)
             {
-                _virtualCamera.Follow = hero.transform;
-                _virtualCamera.LookAt = heroSpine;
+                _virtualCamera.Follow = heroSpine;
+                _virtualCamera.LookAt = hero.transform;
             }
         }
     }

@@ -134,4 +134,4 @@ MonoBehaviour:
   movementSpeed: 5
   characterController: {fileID: 2447412295536196211}
   heroAnimator: {fileID: 1971409667213052504}
-  rotationSpeed: 10
+  rotationSpeed: 13

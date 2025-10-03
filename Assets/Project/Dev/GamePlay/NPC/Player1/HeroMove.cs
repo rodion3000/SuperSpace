@@ -12,11 +12,18 @@ namespace Project.Dev.GamePlay.NPC.Player1
         [SerializeField] private float rotationSpeed;
         private float _rotationAngle;
         private IInputService _inputService;
+        private bool _isTurningRightTriggered;
+        private bool _isTurningLeftTriggered;
 
         [Inject]
         private void Construct(IInputService inputService)
         {
             _inputService = inputService;
+        }
+
+        private void Start()
+        {
+            Cursor.visible = false;
         }
 
         void Update()
@@ -26,7 +33,7 @@ namespace Project.Dev.GamePlay.NPC.Player1
 
         private void LateUpdate()
         {
-            Rotation();
+             Rotation();
         }
 
         private void Move()
@@ -81,7 +88,25 @@ namespace Project.Dev.GamePlay.NPC.Player1
 
         Vector2 input = _inputService.AimAxis;
         _rotationAngle += input.x * rotationSpeed * Time.deltaTime;
-        heroSpine.localRotation = Quaternion.Euler(-_rotationAngle,0f,0f);
+        _rotationAngle = Mathf.Clamp(_rotationAngle, -45f, 45f);
+        heroSpine.localRotation = Quaternion.Euler(-_rotationAngle,5f,-10f);
+        if (_rotationAngle >= 45f && !_isTurningRightTriggered)
+        {
+            heroAnimator.PlayTurnRight();
+            _isTurningRightTriggered = true;
+            _isTurningLeftTriggered = false;
+        }
+        else if (_rotationAngle <= -45f && !_isTurningLeftTriggered)
+        {
+            heroAnimator.PlayTurnLeft();
+            _isTurningLeftTriggered = true;
+            _isTurningRightTriggered = false;
+        }
+        else if (_rotationAngle > -45f && _rotationAngle < 45f)
+        {
+            _isTurningLeftTriggered = false;
+            _isTurningRightTriggered = false;
+        }
     }
     }
 }
