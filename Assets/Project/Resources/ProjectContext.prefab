@@ -62,7 +62,7 @@ MonoBehaviour:
   m_LookaheadTime: 0
   m_LookaheadSmoothing: 0
   m_LookaheadIgnoreY: 0
-  m_HorizontalDamping: 0.5
+  m_HorizontalDamping: 0.1
   m_VerticalDamping: 0.5
   m_ScreenX: 0.5
   m_ScreenY: 0.6
@@ -86,7 +86,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: 0, y: 4, z: -3}
+  m_FollowOffset: {x: 0, y: 5, z: -3}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1

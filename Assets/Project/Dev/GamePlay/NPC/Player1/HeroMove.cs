@@ -1,3 +1,4 @@
+using Project.Dev.Services.CinemachineService;
 using Project.Dev.Services.InputService;
 using UnityEngine;
 using Zenject;
@@ -14,11 +15,13 @@ namespace Project.Dev.GamePlay.NPC.Player1
         private IInputService _inputService;
         private bool _isTurningRightTriggered;
         private bool _isTurningLeftTriggered;
+        private ICinemachineService _cinemachineService;
 
         [Inject]
-        private void Construct(IInputService inputService)
+        private void Construct(IInputService inputService, ICinemachineService cinemachineService)
         {
             _inputService = inputService;
+            _cinemachineService = cinemachineService;
         }
 
         private void Start()
@@ -74,9 +77,13 @@ namespace Project.Dev.GamePlay.NPC.Player1
                 ? (horizontalMove > 0 ? 2 : 3)
                 : 1
             );
+            _cinemachineService.MoveCamera(gameObject);
         }
         else
+        {
             heroAnimator.PlayMove(0);
+            _cinemachineService.HeroCamera(gameObject);
+        }
     }
 
     private void Rotation()

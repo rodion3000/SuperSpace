@@ -25,5 +25,10 @@ namespace Project.Dev.Services.CinemachineService
                 _virtualCamera.LookAt = hero.transform;
             }
         }
+
+        public void MoveCamera(GameObject hero)
+        {
+            _virtualCamera.Follow = hero.transform;
+        }
     }
 }
