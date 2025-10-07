@@ -87,9 +87,14 @@ namespace Project.Dev.GamePlay.NPC.Player1
             .Find("Spine");
 
         Vector2 input = _inputService.AimAxis;
-        _rotationAngle += input.x * rotationSpeed * Time.deltaTime;
+        if(_inputService.AimAxis.sqrMagnitude > 2f)
+        {
+            _rotationAngle += input.x * rotationSpeed * Time.deltaTime;
+        }
+
         _rotationAngle = Mathf.Clamp(_rotationAngle, -45f, 45f);
-        heroSpine.localRotation = Quaternion.Euler(-_rotationAngle,5f,-10f);
+        heroSpine.localRotation = Quaternion.Euler(-_rotationAngle, 5f, -10f);
+
         if (_rotationAngle >= 45f && !_isTurningRightTriggered)
         {
             heroAnimator.PlayTurnRight();
