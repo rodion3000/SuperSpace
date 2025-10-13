@@ -4,7 +4,9 @@ namespace Project.Dev.Services.CinemachineService
 {
     public interface ICinemachineService
     {
-        void HeroCamera(GameObject hero);
+        void SwitchToCamera(int cameraNumber);
         void MoveCamera(GameObject hero);
+        void RotationCamera(GameObject hero);
+
     }
 }

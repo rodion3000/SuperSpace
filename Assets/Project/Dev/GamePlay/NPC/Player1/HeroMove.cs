@@ -77,12 +77,12 @@ namespace Project.Dev.GamePlay.NPC.Player1
                 ? (horizontalMove > 0 ? 2 : 3)
                 : 1
             );
-            _cinemachineService.MoveCamera(gameObject);
+            _cinemachineService.SwitchToCamera(1);
         }
         else
         {
             heroAnimator.PlayMove(0);
-            _cinemachineService.HeroCamera(gameObject);
+            _cinemachineService.SwitchToCamera(2);
         }
     }
 
