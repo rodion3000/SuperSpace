@@ -632,8 +632,7 @@ ModelImporter:
     - name: Player:Right_MiddleDistalEnd
       parentName: Player:Right_MiddleDistal
       position: {x: -0.027206706, y: 0.0000000333786, z: -0.000000011920928}
-      rotation: {x: 0.000000048690698, y: 0.000000029802315, z: -0.00000009663925,
-        w: 1}
+      rotation: {x: 0.000000048690698, y: 0.000000029802315, z: -0.00000009663925, w: 1}
       scale: {x: 0.9999999, y: 1.0000001, z: 1}
     - name: Player:Right_MiddleDistalEnd_end
       parentName: Player:Right_MiddleDistalEnd
@@ -658,8 +657,7 @@ ModelImporter:
     - name: Player:Right_IndexDistalEnd
       parentName: Player:Right_IndexDistal
       position: {x: -0.025762662, y: -0.00000007778406, z: -0.000000010952353}
-      rotation: {x: 0.000000040046856, y: -0.000000029802312, z: 0.000000030151558,
-        w: 1}
+      rotation: {x: 0.000000040046856, y: -0.000000029802312, z: 0.000000030151558, w: 1}
       scale: {x: 0.9999997, y: 1.0000001, z: 1.0000004}
     - name: Player:Right_IndexDistalEnd_end
       parentName: Player:Right_IndexDistalEnd
@@ -679,8 +677,7 @@ ModelImporter:
     - name: Player:Right_ThumbDistalEnd
       parentName: Player:Right_ThumbDistal
       position: {x: -0.034971524, y: 0.000000025220215, z: 0.000000015497207}
-      rotation: {x: -0.00000011607203, y: 0.000000037252896, z: 0.00000003518118,
-        w: 1}
+      rotation: {x: -0.00000011607203, y: 0.000000037252896, z: 0.00000003518118, w: 1}
       scale: {x: 1.0000004, y: 1.0000006, z: 1.0000005}
     - name: Player:Right_ThumbDistalEnd_end
       parentName: Player:Right_ThumbDistalEnd
@@ -705,8 +702,7 @@ ModelImporter:
     - name: Player:Right_RingDistalEnd_
       parentName: Player:Right_RingDistal
       position: {x: -0.02606759, y: 0.000000021010637, z: -0.00000006079674}
-      rotation: {x: -0.000000031664957, y: 0.000000059604623, z: -0.000000021595035,
-        w: 1}
+      rotation: {x: -0.000000031664957, y: 0.000000059604623, z: -0.000000021595035, w: 1}
       scale: {x: 1.0000004, y: 0.99999964, z: 1.0000001}
     - name: Player:Right_RingDistalEnd__end
       parentName: Player:Right_RingDistalEnd_
@@ -766,8 +762,7 @@ ModelImporter:
     - name: Player:HeadEnd
       parentName: Player:Head
       position: {x: -0.22104508, y: 0.000000052452087, z: 0.0000000080466265}
-      rotation: {x: -0.000000055938926, y: -0.00000003621781, z: -0.000000078231096,
-        w: 1}
+      rotation: {x: -0.000000055938926, y: -0.00000003621781, z: -0.000000078231096, w: 1}
       scale: {x: 1.0000004, y: 1.0000002, z: 1.0000004}
     - name: Player:HeadEnd_end
       parentName: Player:HeadEnd
@@ -812,8 +807,7 @@ ModelImporter:
     - name: Player:Left_MiddleDistalEnd
       parentName: Player:Left_MiddleDistal
       position: {x: 0.027206909, y: 0.00000013768673, z: -0.00000026494263}
-      rotation: {x: -0.000000021042064, y: -0.000000014901158, z: -0.000000115011034,
-        w: 1}
+      rotation: {x: -0.000000021042064, y: -0.000000014901158, z: -0.000000115011034, w: 1}
       scale: {x: 1.0000001, y: 1.0000002, z: 0.9999998}
     - name: Player:Left_MiddleDistalEnd_end
       parentName: Player:Left_MiddleDistalEnd
@@ -858,8 +852,7 @@ ModelImporter:
     - name: Player:Left_ThumbDistalEnd
       parentName: Player:Left_ThumbDistal
       position: {x: 0.034967516, y: 0.0000011867285, z: -0.0000020873547}
-      rotation: {x: -0.0000000072910744, y: 0.000000044703462, z: -0.00000006665769,
-        w: 1}
+      rotation: {x: -0.0000000072910744, y: 0.000000044703462, z: -0.00000006665769, w: 1}
       scale: {x: 0.99999964, y: 0.9999998, z: 0.9999999}
     - name: Player:Left_ThumbDistalEnd_end
       parentName: Player:Left_ThumbDistalEnd
@@ -884,8 +877,7 @@ ModelImporter:
     - name: Player:Left_RingDistalEnd
       parentName: Player:Left_RingDistal
       position: {x: 0.026063394, y: -0.0000009322166, z: 0.00000020503997}
-      rotation: {x: 0.000000021420414, y: -0.000000081956365, z: 0.0000000016880217,
-        w: 1}
+      rotation: {x: 0.000000021420414, y: -0.000000081956365, z: 0.0000000016880217, w: 1}
       scale: {x: 1.0000002, y: 1.0000005, z: 0.99999994}
     - name: Player:Left_RingDistalEnd_end
       parentName: Player:Left_RingDistalEnd
