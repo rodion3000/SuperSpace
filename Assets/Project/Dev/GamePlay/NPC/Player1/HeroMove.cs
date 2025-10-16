@@ -89,6 +89,7 @@ namespace Project.Dev.GamePlay.NPC.Player1
     private void Rotation()
     {
         Transform heroSpine = transform
+            .Find("Model")
             .Find("GameSkeleton")
             .Find("Hips")
             .Find("Spine");

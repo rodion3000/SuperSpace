@@ -39,6 +39,7 @@ namespace Project.Dev.Services.CinemachineService
         public void RotationCamera(GameObject hero)
         {
             Transform heroSpine = hero.transform
+                .Find("Model")
                 .Find("GameSkeleton")
                 .Find("Hips")
                 .Find("Spine");
