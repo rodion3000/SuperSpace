@@ -1,5 +1,7 @@
+using Project.Dev.GamePlay.AnimatorLogic;
 using Project.Dev.Services.CinemachineService;
 using Project.Dev.Services.InputService;
+using UniRx;
 using UnityEngine;
 using Zenject;
 
@@ -27,6 +29,7 @@ namespace Project.Dev.GamePlay.NPC.Player1
         private void Start()
         {
             Cursor.visible = false;
+            TurnLogicSubscribe();
         }
 
         void Update()
@@ -121,5 +124,23 @@ namespace Project.Dev.GamePlay.NPC.Player1
             _isTurningRightTriggered = false;
         }
     }
+
+    private void TurnLogicSubscribe()
+    {
+        Observable
+            .FromEvent<AnimatorState>(
+                x => heroAnimator.StateEntered += x,
+                x => heroAnimator.StateEntered -= x)
+            .Where(state => state == AnimatorState.TurnLeft || state == AnimatorState.TurnRight)
+            .Subscribe(_ => TurnLogic());
+
+    }
+
+    private void TurnLogic()
+    {
+        Debug.Log("длолдо");
+
+    }
+
     }
 }
